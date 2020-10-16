@@ -13,4 +13,4 @@ Below some features provided by this project:
 9. each user can see pages according to his/her Roles.
 10. get the temperatures from Arduino and present it in table.
 11. used MYSQL server for database.
-Note: this project used as a part of gradution project for students of computer system Engineering at palestine polytechnic university.
+### Note: this project used as a part of gradution project for students of computer system Engineering at palestine polytechnic university.
