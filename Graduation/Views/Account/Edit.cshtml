@@ -1,0 +1,81 @@
+﻿@model EditViewModel
+@{
+    ViewBag.Title = "UpdateUser";
+
+}
+<form asp-action="Edit" asp-controller="Account" method="post">
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="OldPassword"></label>
+        <input asp-for="OldPassword" class="form-control" />
+        <span asp-validation-for="OldPassword" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+    </div>
+
+    <div class="form-group row">
+
+        <label asp-for="DirctorateId" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select id="DirctorateId" asp-for="DirctorateId" class="custom-select mr-sm-2"
+                    asp-items="@(new SelectList( Model.Directorates,"DirectorateId","Name"))">
+                <option value="">Please Select</option>
+            </select>
+            <span asp-validation-for="DirctorateId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <span class="text-warning"> Note: if you dont add clinic for this user,then the user will be an admin</span>
+    <div class="form-group row">
+        <label asp-for="ClinicId" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select id="ClinicId" asp-for="ClinicId" class="custom-select mr-sm-2"
+                    asp-items="@(new SelectList( string.Empty,"clinicId","Name"))"></select>
+            <span asp-validation-for="ClinicId" class="text-danger"></span>
+
+        </div>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <button type="submit" class="btn btn-primary">Update</button>
+
+</form>
+
+<script src="~/lib/jquery/jquery.js"></script>
+<script>
+    $(function () {
+        $("#DirctorateId").change(function () {
+            var url = '@Url.Content("~/")' + "Account/GetClinincsByDirecID";
+            var ddlsource = "#DirctorateId";
+            $.getJSON(url, { directorateId: $(ddlsource).val() }, function (data) {
+                var items = '<option value="">Please Select</option>';
+                $("#ClinicId").empty();
+                $.each(data, function (i, row) {
+                    items += "<option value='" + row.value + "'>" + row.text + "</option>";
+                });
+                $("#ClinicId").html(items);
+            })
+        });
+
+    });
+</script>

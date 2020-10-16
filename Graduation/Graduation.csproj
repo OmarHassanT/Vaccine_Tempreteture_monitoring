@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200804181339_directorateId_notRequired.cs" />
+    <Compile Remove="Migrations\20200804181339_directorateId_notRequired.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\css\bootstrap.min.css" />
+    <None Include="wwwroot\assets\css\responsive.css" />
+    <None Include="wwwroot\assets\css\style.css" />
+    <None Include="wwwroot\assets\font-awesome\css\font-awesome.css" />
+    <None Include="wwwroot\assets\font-awesome\css\font-awesome.min.css" />
+    <None Include="wwwroot\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\assets\font-awesome\less\animated.less" />
+    <None Include="wwwroot\assets\font-awesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\assets\font-awesome\less\core.less" />
+    <None Include="wwwroot\assets\font-awesome\less\fixed-width.less" />
+    <None Include="wwwroot\assets\font-awesome\less\font-awesome.less" />
+    <None Include="wwwroot\assets\font-awesome\less\icons.less" />
+    <None Include="wwwroot\assets\font-awesome\less\larger.less" />
+    <None Include="wwwroot\assets\font-awesome\less\list.less" />
+    <None Include="wwwroot\assets\font-awesome\less\mixins.less" />
+    <None Include="wwwroot\assets\font-awesome\less\path.less" />
+    <None Include="wwwroot\assets\font-awesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\assets\font-awesome\less\screen-reader.less" />
+    <None Include="wwwroot\assets\font-awesome\less\stacked.less" />
+    <None Include="wwwroot\assets\font-awesome\less\variables.less" />
+    <None Include="wwwroot\assets\font-awesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_animated.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_path.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_screen-reader.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\assets\font-awesome\scss\_variables.scss" />
+    <None Include="wwwroot\assets\img\celebration_0jvk.svg" />
+    <None Include="wwwroot\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\custom.js" />
+    <None Include="wwwroot\assets\js\jquery.min.js" />
+    <None Include="wwwroot\assets\js\popper.min.js" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
+    <PackageReference Include="ReflectionIT.Mvc.Paging" Version="3.5.0" />
+  </ItemGroup>
+
+</Project>

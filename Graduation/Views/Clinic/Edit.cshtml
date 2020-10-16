@@ -1,0 +1,53 @@
+﻿@model Clinic
+@inject IDirectorateRepository dirctorateRepo;
+@{
+    ViewBag.Title = "Edit Clinic";
+}
+
+<h1>@ViewBag.Title </h1>
+
+
+<form asp-controller="clinic" asp-action="Edit" method="post" class="col-sm-10">
+    <div class="form-group ">
+        <input asp-for="clinicId" hidden />
+
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" placeholder="Name of clinic" />
+        <span asp-validation-for="Name"></span>
+
+    </div>
+
+    <div class="form-group ">
+
+        <label asp-for="Place"></label>
+        <input asp-for="Place" class="form-control" placeholder="Place of clinic" />
+        <span asp-validation-for="Place"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DirectorateId" class=" col-form-label"> Choose Directorate</label>
+        <div>
+
+            <select asp-for="DirectorateId" class="custom-select mr-sm-2">
+                <option value="">Please Select</option>
+
+                @foreach (var direc in dirctorateRepo.GetDirectorates())
+                {
+                    <option value="@direc.DirectorateId">@direc.Name</option>
+
+                }
+            </select>
+            <span asp-validation-for="DirectorateId"></span>
+        </div>
+    </div>
+
+
+    <div asp-validation-summary="All">
+    </div>
+    <div class="row">
+        <div class="container">
+            <button type="submit" class="btn btn-primary">Update Clinic</button>
+            <a class="btn btn-secondary" asp-controller="clinic" asp-action="index">Cancel</a>
+        </div>
+
+    </div>
+</form>

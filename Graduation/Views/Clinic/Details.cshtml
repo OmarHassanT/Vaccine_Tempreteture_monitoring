@@ -1,0 +1,51 @@
+﻿@model Clinic
+@inject IDirectorateRepository directorateRep;
+@{
+    ViewBag.Title = "Clinic Details";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="card-deck">
+
+    <div class="card m-3  " style="min-width: 18rem; max-width:30.5%;">
+        <div class="card-header text-center">
+            <h3>@Model.Name</h3>
+        </div>
+        <div class="card-body text-left">
+            <p>place: @Model.Place</p>
+            <p>directorate: @directorateRep.GetDirectorate(Model.DirectorateId).Name</p>
+
+            <div class="card-footer text-center">
+                <a asp-controller="clinic" asp-action="FridegTempretures" asp-route-ClinId="@Model.clinicId"
+                   class="btn btn-primary m-1">Fridge</a>
+                @if (User.IsInRole("superAdmin"))
+                {
+
+                
+                <a asp-action="Edit" asp-controller="clinic" asp-route-id="@Model.clinicId"
+                   class="btn btn-primary m-1">Edit</a>
+                <a asp-action="index" asp-controller="clinic"
+                   class="btn btn-primary m-1">All clinics</a>
+                <form method="post" asp-action="Delete" asp-controller="clinic" asp-route-id="@Model.clinicId">
+                    <span id="confirmDeleteSpan_@Model.clinicId" style="display:none">
+                        <span>Are you sure you want to delete?</span>
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <a href="#" class="btn btn-primary" onclick="confirmDelete('@Model.clinicId',false)">No</a>
+                    </span>
+                    <span id="deleteSpan_@Model.clinicId">
+                        <a href="#" onclick="confirmDelete('@Model.clinicId',true)" class="btn btn-danger">Delete</a>
+                    </span>
+
+                </form>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+@section Scripts{
+    <script src="~/js/CustomScript.js"></script>
+}

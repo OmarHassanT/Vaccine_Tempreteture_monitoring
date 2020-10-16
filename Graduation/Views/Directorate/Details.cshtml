@@ -1,0 +1,45 @@
+﻿@model Directorate
+
+@{
+    ViewBag.Title = "Directorater Details";
+}
+<h1>  @ViewBag.Title</h1>
+<div class="card col-md-12 mb-3 ">
+
+        <div class="card-header text-center">
+            <h3>@Model.Name</h3>
+        </div>
+        <div class="card-body text-left">
+            <p>place: @Model.Place</p>
+            <p>Phone Number: @Model.PhoneNumber</p>
+
+            <div class="card-footer text-center">
+                <a asp-controller="directorate" asp-action="clinics" asp-route-directoreateId="@Model.DirectorateId"
+                   class="btn btn-primary m-1">View Clinics</a>
+                @if (User.IsInRole("superAdmin"))
+                {
+                    <a asp-action="Edit" asp-controller="directorate" asp-route-id="@Model.DirectorateId"
+                       class="btn btn-primary m-1">Edit</a>
+                    <a asp-action="index" asp-controller="directorate"
+                       class="btn btn-primary m-1">Back to list</a>
+                    <form method="post" asp-action="Delete" asp-controller="directorate" asp-route-id="@Model.DirectorateId">
+                        <span id="confirmDeleteSpan_@Model.DirectorateId" style="display:none">
+                            <span>This will delete all information about directorate including clinics and users. Are you sure you want to delete?</span>
+                            <button type="submit" class="btn btn-danger">Yes</button>
+                            <a href="#" class="btn btn-primary" onclick="confirmDelete('@Model.DirectorateId',false)">No</a>
+                        </span>
+                        <span id="deleteSpan_@Model.DirectorateId">
+                            <a href="#" onclick="confirmDelete('@Model.DirectorateId',true)" class="btn btn-danger">Delete</a>
+                        </span>
+
+                    </form>
+                }
+            </div>
+    </div>
+
+
+
+</div>
+@section Scripts{
+    <script src="~/js/CustomScript.js"></script>
+}

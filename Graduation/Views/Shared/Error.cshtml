@@ -1,0 +1,10 @@
+﻿@if (ViewBag.ErrorMessage == null)
+{
+
+    <h1>Please call us about this Error in Email: 161022@ppu.edu.ps</h1>
+}
+else
+{ <h1 class="text-danger">@ViewBag.ErrorTitle</h1>
+
+<h6 class="text-danger"> @ViewBag.ErrorMessage </h6>
+}

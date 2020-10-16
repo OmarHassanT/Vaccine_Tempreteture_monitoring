@@ -1,0 +1,78 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<fridgeTempreture>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *,ReflectionIT.Mvc.Paging
+@{
+    var clinicId = Context.Request.Query["ClinId"];
+    string color;
+    Layout = "~/Views/Shared/FridegLayout.cshtml";
+
+}
+
+<div class="row">
+    <div class="container">
+        <h1>  @ViewBag.Title</h1>
+        <button onclick="print()" class="btn btn-primary float-right mb-3">Print</button>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Temperature</th>
+        <th scope="col">Date</th>
+
+    </tr>
+    @foreach (var data in Model)
+    {
+        <tr>
+            @if (data.temperature > 8 || data.temperature < 2)
+            {
+                if (data.temperature == 1000)
+                {
+                    color = "magenta";
+                }
+                else
+                {
+                    color = "red";
+
+                }
+            }
+
+            else
+            {
+                color = "green";
+
+
+            }
+
+            <td style="color:@color">@data.id</td>
+            @if (color == "magenta")
+            {
+                <td style="color:@color">None</td>
+            }
+            else
+            {
+                <td style="color:@color">@data.temperature</td>
+
+            }
+            <td style="color:@color">@data.date</td>
+
+
+
+        </tr>
+    }
+
+</table>
+@{
+    var prevDisabled = Model.PageIndex <= 1 ? "disabled" : "";
+    var nextDisabled = Model.PageIndex >= Model.PageCount ? "disabled" : "";
+}
+<a asp-action="FridegTempretures" asp-controller="Clinic"
+   asp-route-clinId="@clinicId" asp-route-pageIndex="@(Model.PageIndex-1)"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-action="FridegTempretures" asp-controller="Clinic"
+   asp-route-clinId="@clinicId" asp-route-pageIndex="@(Model.PageIndex+1)"
+   class="btn btn-primary  @nextDisabled">
+    Next
+</a>

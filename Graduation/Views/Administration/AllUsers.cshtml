@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ApplicationUser>
+@inject IDirectorateRepository directorateRepository
+@inject IClinicRepository clinicRepository
+@inject UserManager<ApplicationUser> usermanager
+@{
+    ViewBag.Title = "All Users";
+
+}
+
+<div class="row">
+    <div class="container">
+        <h1>  @ViewBag.Title</h1>        
+
+    <a class="btn btn-primary float-right mb-3" asp-controller="Account" asp-action="Register">
+        Register users</a>
+    </div>
+</div>
+<div class="card-deck">
+
+    @foreach (var user in Model)
+    {
+
+
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header text-center">
+                Name:  @user.UserName
+            </div>
+            <div class="card-body text-left">
+                <div>
+                    Email: @user.Email
+                </div>
+                <div>
+                    @if (user.DirectorateId != null && user.clinicId != null)
+                    {
+                        <div>
+                            Directorate:  @directorateRepository.GetDirectorate(user.DirectorateId).Name
+                        </div>
+                        <div>
+                            Clinic: @clinicRepository.GetClinic((int)user.clinicId).Name
+                        </div>
+                    }
+                    else if (user.DirectorateId == null && user.clinicId == null)
+                    {
+                        <div>
+                            Roles:
+                            <ul style="margin-left:20px">
+
+                                @foreach (var role in await usermanager.GetRolesAsync(user))
+                                {
+                                    <li>@role</li>
+                                }
+                            </ul>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <span>
+                            Directorate:  @directorateRepository.GetDirectorate(user.DirectorateId).Name
+                        </span>
+
+                    }
+                </div>
+
+            </div>
+            <div class="card-footer text-center">
+                <div>
+                    <form method="post" asp-action="deleteUser" asp-controller="administration" asp-route-id="@user.Id">
+                        <a asp-action="Edit" asp-controller="account" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
+                        
+                        <button type="submit" onclick=" return confirm('Are you sure you want to delete:(@user.Email)?')" class="btn btn-danger">Delete</button>
+
+                    </form>
+                   
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+@section Scripts{
+    <script src="~/js/CustomScript.js"></script>
+}

@@ -1,0 +1,66 @@
+﻿@model loginViewModel
+@{ 
+    ViewBag.Title = "LogIn";
+    var returnURL = Context.Request.Query["ReturnUrl"];
+}
+<div class="cover">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h2 class="h1 font-weight-bold">login </h2>
+
+                <form asp-action="login" asp-controller="account" method="post" asp-route-returnURL="@returnURL">
+
+
+                    <div class="input-group input-group-lg mt-5">
+
+                        <input asp-for="Email" class="form-control" aria-label="username input" placeholder="Email" aria-describedby="inputGroup-sizing-lg">
+                    </div>
+
+                    <div class="input-group input-group-lg mt-4 mb-2">
+
+                        <input asp-for="Password" class="form-control" aria-label="password input" placeholder="Password" aria-describedby="inputGroup-sizing-lg">
+
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+
+
+                        <div class="custom-control custom-checkbox">
+                            <input asp-for="RememberMe" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Remember me</label>
+                        </div>
+
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="d-flex justify-content-end mt-5">
+                        <div class="p-2"><button type="submit" class="btn btn-primary" >login</button></div>
+                    </div>
+                </form>
+            
+
+            </div>
+
+            <div class="col-md-6 left">
+                <div class=""></div>
+                <!-- <h1 class="display-3 font-weight-bold" style="z-index: 2">welcome <br> back.</h1> -->
+                <!-- <p class="px-2 textt">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts{
+
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+}

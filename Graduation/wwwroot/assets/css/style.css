@@ -1,0 +1,133 @@
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+
+ * {
+     margin: 0;
+     padding: 0;
+     outline: none;
+     border: none;
+}
+body {
+    font-family: 'Noto Sans', sans-serif;
+    color: #6c7686;
+    font-size: 1rem;
+    line-height: 1.7;
+    text-transform: capitalize;
+    overflow: scroll;
+}
+ ::-moz-selection {
+    /* Code for Firefox */
+     background-color: #1abc9c;
+     color: #fff;
+}
+ ::selection {
+     background-color: #00c9a7;
+     color: #fff;
+}
+
+
+button:focus,
+.btn.focus, 
+.btn:focus{
+     outline: none!important; 
+     box-shadow: none!important;
+}
+
+a {
+    text-decoration: none!important;
+}
+
+a:hover { color: currentColor!important; }
+
+
+
+.cover {
+     height: 100vh;
+     display: -webkit-box;
+     display: flex;
+     -webkit-box-orient: vertical;
+     -ms-box-orient: vertical;
+     -moz-box-orient: vertical;
+     -o-box-orient: vertical;
+     -webkit-box-direction: normal;
+     -ms-box-direction: normal;
+     -moz-box-direction: normal;
+     -o-box-direction: normal;
+     flex-direction: column;
+     -webkit-box-pack: center;
+     -ms-box-pack: center;
+     -moz-box-pack: center;
+     -o-box-pack: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     -ms-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     align-items: center;
+     text-transform: capitalize;
+     letter-spacing: 2px;
+}
+
+
+a.register { color: #a95cde }
+
+a.log_btn {
+    padding: .5rem 3.5rem!important;
+    background: #873fdf;
+    color: #fff;
+    border-radius: 25px;
+}
+
+a.log_btn:hover { color: #fff!important; }
+
+.custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow:none!important;
+}
+
+.custom-control-input:checked~.custom-control-label::before { 
+    border: #873fdf!important;
+    background: #873fdf!important;
+ }
+
+.textt {
+     word-wrap: break-word;
+   width: 100px;
+}
+
+
+
+.form-control:focus {
+    color: #495057;
+    border-color: #873fdf!important;
+    outline: 0;
+    box-shadow: none!important;
+}
+
+
+.ftr { 
+    position: fixed;
+    bottom: 30px;
+ }
+
+.social {
+    padding: .35rem 1.4rem;
+    border-radius: 25px;
+}
+
+#facebook {
+    background: #4966a0;
+    color: #fff;
+}
+
+#twitter {
+    background: #0dacf0;
+    color: #fff;
+}
+
+.left { 
+
+    background: url(../img/celebration_0jvk.svg) no-repeat right;
+    background-size: cover;
+ }
